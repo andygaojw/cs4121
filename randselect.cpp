@@ -87,7 +87,8 @@ int main(int argc, char *argv[]) {
 	}
 	int i, n, j, k, cnt = 0, T = atoi(argv[1]);
 	srand(time(NULL));
-	for (i = 1; i <= T; i++) {
+	cout << "-------------cases with few duplicates-------------" << endl;
+	for (i = 1; i <= T / 2; i++) {
 		n = 10 + rand() % 100000;
 		k = rand() % n;
 		vector<int> a = vector<int>();
@@ -95,6 +96,35 @@ int main(int argc, char *argv[]) {
 		vector<int> ipt = vector<int>();
 		for (j = 0 ; j < n; j++) {
 			int v = rand() % 10000;
+			a.push_back(v);
+			b.push_back(v);
+			ipt.push_back(v);
+		}
+		
+		int v1 = randselect(a, k);
+		int v2 = jury(b, k);
+		if (v1 == v2) {
+			cout << "pass test case " << i << endl;
+			cnt++;
+		} else {
+			cout << "fail test case " << i << " expected " << v2 << " get " << v1 << endl;
+			cout << "input: " << endl;
+			cout << n << " " << k << endl;
+			for (j = 0 ; j < n; j++) {
+				cout << ipt[j] << " ";
+			}
+			cout << endl;
+		}
+	}
+	cout << "-------------cases with many duplicates-------------" << endl;
+	for (i = T / 2 + 1; i <= T; i++) {
+		n = 10 + rand() % 100000;
+		k = rand() % n;
+		vector<int> a = vector<int>();
+		vector<int> b = vector<int>();
+		vector<int> ipt = vector<int>();
+		for (j = 0 ; j < n; j++) {
+			int v = rand() % 100;
 			a.push_back(v);
 			b.push_back(v);
 			ipt.push_back(v);
