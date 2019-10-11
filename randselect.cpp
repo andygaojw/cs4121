@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
 		vector<int> b = vector<int>();
 		vector<int> ipt = vector<int>();
 		for (j = 0 ; j < n; j++) {
-			int v = rand() % 10000;
+			int v = -500 + rand() % 100000;
 			a.push_back(v);
 			b.push_back(v);
 			ipt.push_back(v);
